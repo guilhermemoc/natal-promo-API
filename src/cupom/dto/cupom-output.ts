@@ -3,5 +3,7 @@ export type CupomOutput = {
   email: string;
   cpf: string;
   name: string;
+  tel: string;
+  code: string;
   createdAt: Date;
 };

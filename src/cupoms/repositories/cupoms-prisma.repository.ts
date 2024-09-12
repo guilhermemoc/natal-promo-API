@@ -33,6 +33,9 @@ export class CupomsPrismaRepository implements ICupomsRepository {
   async findById(id: string): Promise<Cupom> {
     return await this.get(id);
   }
+  async getAll(): Promise<Cupom> {
+    return await this.getAll();
+  }
   findByEmail(email: string): Promise<Cupom> {
     throw new Error('Method not implemented.');
   }

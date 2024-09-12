@@ -9,7 +9,6 @@ export namespace CreateCupomUsecase {
     name: string;
     tel: string;
     code: string;
-    isActive: boolean;
   };
 
   export type Output = CupomOutput;

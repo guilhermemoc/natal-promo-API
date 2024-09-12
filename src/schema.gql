@@ -19,5 +19,16 @@ scalar DateTime
 
 type Query {
   hello: String!
-  cupoms: [Cupom!]!
+}
+
+type Mutation {
+  createCupom(data: CreateCupomInput!): Cupom!
+}
+
+input CreateCupomInput {
+  name: String!
+  email: String!
+  cpf: String!
+  tel: String!
+  code: String!
 }
