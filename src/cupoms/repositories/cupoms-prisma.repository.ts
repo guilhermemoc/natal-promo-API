@@ -7,14 +7,28 @@ import { NotFoundError } from '@/shared/errors/not-found-error';
 export class CupomsPrismaRepository implements ICupomsRepository {
   constructor(private prisma: PrismaService) {}
 
-  create(data: ICreateCupom): Promise<Cupom> {
-    throw new Error('Method not implemented.');
+  async create(data: ICreateCupom): Promise<Cupom> {
+    const cupom = await this.prisma.cupom.create({
+      data,
+    });
+    return cupom;
   }
-  update(cupom: Cupom): Promise<Cupom> {
-    throw new Error('Method not implemented.');
+  async update(cupom: Cupom): Promise<Cupom> {
+    await this.get(cupom.id);
+    const cupomUpdated = await this.prisma.cupom.update({
+      data: cupom,
+      where: {
+        id: cupom.id,
+      },
+    });
+    return cupomUpdated;
   }
-  delete(id: string): Promise<Cupom> {
-    throw new Error('Method not implemented.');
+  async delete(id: string): Promise<Cupom> {
+    const cupom = await this.get(id);
+    await this.prisma.cupom.delete({
+      where: { id },
+    });
+    return cupom;
   }
   async findById(id: string): Promise<Cupom> {
     return await this.get(id);
